@@ -1,0 +1,230 @@
+.card-container {
+  width: 100%;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.car-image {
+  width: 100px;
+  height: auto;
+
+  
+}
+
+.icon-image{
+
+  size-adjust: 33px;
+
+  
+}
+.driver-image{
+
+  background-image: url("../images/icon/driver.png");
+  background-size: 33px;
+  
+}
+
+.car-info h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.car-info p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #777;
+}
+
+.details-section p {
+  margin: 0;
+  font-size: 12px;
+}
+
+.price-section {
+  text-align: right;
+}
+
+.original-price {
+  text-decoration: line-through;
+  color: red;
+}
+
+.final-price {
+  color: #007bff;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.discount {
+  color: green;
+}
+
+.select-btn {
+  background-color: orange;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.details-btn {
+  margin-top: 10px;
+  background-color: #007bff;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.collapsible-section {
+  border-top: 1px solid #ddd;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+
+.tabs {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+}
+
+.tab-btn {
+  padding: 8px 12px;
+  border: none;
+  background-color:  #1f5ea1;;
+  cursor: pointer;
+  margin-right: 5px;
+  border-radius: 5px;
+}
+
+.tab-btn.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.tab-content {
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .card-container {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.car-image {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  border-radius: 4px;
+}
+
+.car-info h3 {
+  margin: 10px 0 5px;
+  font-size: 1.2rem;
+}
+
+.details-section, .price-section {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.final-price {
+  font-size: 1.5rem;
+  color: #28a745;
+}
+
+.select-btn {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.select-btn:hover {
+  background-color: #0056b3;
+}
+
+.details-btn {
+  width: 100%;
+  padding: 8px;
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.details-btn:hover {
+  background-color: #5a6268;
+}
+
+.collapsible-section {
+  margin-top: 10px;
+}
+
+.tabs {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.tab-btn {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  background-color: #f8f9fa;
+  cursor: pointer;
+}
+
+.tab-btn.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.tab-content {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+} */

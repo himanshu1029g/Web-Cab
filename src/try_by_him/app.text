@@ -1,0 +1,83 @@
+import "./App.css";
+
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+import Navbar from "./try_by_him/Navbar";
+import About from "./try_by_him/About";
+import Dashboard from "./try_by_him/Dashboard";
+import Home_try from "./try_by_him/Home_try";
+import Linkedin from "./try_by_him/Linkedin";
+import Github from "./try_by_him/Github";
+import Insta from "./try_by_him/Insta";
+import NOtFound from "./try_by_him/NotFound";
+
+const router = createBrowserRouter([
+  {
+    path: "/home",
+    element: (
+      <div>
+        <Navbar />
+        <Home_try />
+      </div>
+    ),
+  },
+  {
+    path: "/about",
+    element: (
+      <div>
+        <Navbar />
+        <About />
+      </div>
+    ),
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <div>
+        <Navbar />
+        <Dashboard />
+      </div>
+    ),
+    // now do nested routing
+    children: [
+      {
+        path: "linkedin",
+        element: (
+          <div>
+            <Linkedin />
+          </div>
+        ),
+      },
+      {
+        path: "github",
+        element: (
+          <div>
+            <Github />
+          </div>
+        ),
+      },
+      {
+        path: "insta",
+        element: (
+          <div>
+            <Insta />
+          </div>
+        ),
+      },
+    ],
+  },
+  {
+    path: "*",
+    element: <NOtFound/>
+  }
+]);
+
+function App() {
+  return (
+    <>
+      <RouterProvider router={router} />
+    </>
+  );
+}
+
+export default App;

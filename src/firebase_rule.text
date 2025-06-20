@@ -1,0 +1,110 @@
+rules_version = '2';
+
+service cloud.firestore { match /databases/{database}/documents {
+// User profiles - Allow all authenticated users to read
+ match /users/{userId} {
+ allow create: if request.auth != null && request.auth.uid == userId;
+ allow read: if request.auth != null; allow update: if request.auth != null && request.auth.uid == userId; }
+ 
+ // Bookings - Updated rules with improved access control
+match /bookings/{bookingId} {
+  allow create: if request.auth != null;
+
+  // Allow read for booking owner, assigned vendor, or vendors who applied
+  allow read: if request.auth != null && (
+    request.auth.uid == resource.data.userId ||              // Booking owner
+    request.auth.uid == resource.data.vendorId ||            // Assigned vendor
+    resource.data.status == "pending" ||                     // Booking is still pending
+    exists(/databases/$(database)/documents/applications/$(bookingId + "_" + request.auth.uid))  // Vendor has applied
+  );
+
+  allow update: if request.auth != null && (
+    request.auth.uid == resource.data.userId ||              // Booking owner
+    request.auth.uid == resource.data.vendorId ||            // Assigned vendor
+    (
+      resource.data.status == "pending" &&
+      request.resource.data.diff(resource.data).affectedKeys()
+        .hasOnly(['status', 'vendorId', 'vendorDetails', 'price', 'notes', 'updatedAt', 'hasApplications'])
+    )
+  );
+
+  allow delete: if request.auth != null && request.auth.uid == resource.data.userId;
+}
+
+// Applications - Updated rules with better access
+match /applications/{applicationId} {
+  allow create: if request.auth != null;
+
+  allow read: if request.auth != null && (
+    request.auth.uid == resource.data.vendorId ||            // Vendor who created the application
+    resource.data.status == "rejected" ||                   // Application status is rejected
+    exists(/databases/$(database)/documents/vendors/$(request.auth.uid)) || // Vendor exists
+    request.auth.uid == resource.data.userId ||              // Booking owner
+    exists(/databases/$(database)/documents/bookings/$(resource.data.bookingId)) &&
+    get(/databases/$(database)/documents/bookings/$(resource.data.bookingId)).data.userId == request.auth.uid
+  );
+
+  allow update: if request.auth != null && (
+    request.auth.uid == resource.data.vendorId ||            // Vendor who created the application
+    (
+      exists(/databases/$(database)/documents/bookings/$(resource.data.bookingId)) &&
+      get(/databases/$(database)/documents/bookings/$(resource.data.bookingId)).data.userId == request.auth.uid &&
+      request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'updatedAt'])
+    )
+  );
+
+  allow delete: if request.auth != null && request.auth.uid == resource.data.vendorId;
+}
+
+// Notifications - Updated rules
+match /notifications/{notificationId} {
+  allow read: if request.auth != null && (
+    request.auth.uid == resource.data.recipientId ||         // Recipient of the notification
+    exists(/databases/$(database)/documents/bookings/$(resource.data.bookingId)) &&
+    (
+      get(/databases/$(database)/documents/bookings/$(resource.data.bookingId)).data.userId == request.auth.uid ||
+      get(/databases/$(database)/documents/bookings/$(resource.data.bookingId)).data.vendorId == request.auth.uid
+    )
+  );
+
+  allow create: if request.auth != null && 
+    request.resource.data.type in ["application_accepted", "application_rejected"];
+
+  allow update: if request.auth != null && 
+    request.auth.uid == resource.data.recipientId &&
+    request.resource.data.diff(resource.data).affectedKeys().hasOnly(['read', 'updatedAt']);
+}
+
+// Vendors - Updated rules
+match /vendors/{vendorId} {
+  allow create: if request.auth != null && request.auth.uid == vendorId;
+  allow read: if request.auth != null;
+  allow update: if request.auth != null && request.auth.uid == vendorId;
+}
+
+// Transactions - Enhanced rules
+match /transactions/{transactionId} {
+  // Allow read if user is part of transaction
+  allow read: if request.auth != null && (
+    resource.data.userId == request.auth.uid || 
+    resource.data.vendorId == request.auth.uid
+  );
+  
+  // Allow create with validation
+  allow create: if request.auth != null && 
+    request.resource.data.userId == request.auth.uid &&
+    request.resource.data.keys().hasAll([
+      'paymentId', 'vendorId', 'userId', 
+      'applicationId', 'bookingId', 
+      'amount', 'status', 'timestamp'
+    ]) &&
+    exists(/databases/$(database)/documents/applications/$(request.resource.data.applicationId)) &&
+    exists(/databases/$(database)/documents/bookings/$(request.resource.data.bookingId));
+
+  // Allow update only for payment status changes
+  allow update: if request.auth != null &&
+    request.auth.uid == resource.data.userId &&
+    request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'updatedAt']);
+}
+
+} }

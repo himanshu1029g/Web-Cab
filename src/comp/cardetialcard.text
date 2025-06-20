@@ -1,0 +1,97 @@
+import React, { useState } from "react";
+import "../styles/CarDetail_Card.css";
+
+// ✅ Props ko yaha receive karo
+function CarDetail_Card({ car_pic, car_name }) {
+const [activeTab, setActiveTab] = useState("INCLUSIONS");
+const [showDetails, setShowDetails] = useState(false);
+
+// Handle tab click
+const handleTabClick = (tab) => {
+setActiveTab(tab);
+};
+
+// Toggle details section
+const toggleDetails = () => {
+setShowDetails(!showDetails);
+};
+
+return (
+<div className="card-container">
+    {/* Top Section */}
+    <div className="card-header">
+    {/* ✅ Corrected img tag */}
+    <img src={car_pic} alt={car_name} className="car-image" />
+    <div className="car-info">
+        <h3>{car_name}</h3>
+        <p>or equivalent</p>
+    </div>
+    <div className="details-section">
+        <p>Top Rated Cabs & Buses</p>
+        <p>Includes Toll, State Tax & GST</p>
+    </div>
+    <div className="price-section">
+        <p className="original-price">₹1973</p>
+        <p className="discount">Save ₹126</p>
+        <p className="final-price">₹1847</p>
+        <button className="select-btn">Select</button>
+    </div>
+    </div>
+
+    {/* Toggle Details Button */}
+    <button className="details-btn" onClick={toggleDetails}>
+    {showDetails ? "Hide Details" : "Details"}
+    </button>
+
+    {/* Collapsible Section */}
+    {showDetails && (
+    <div className="collapsible-section">
+        {/* Tabs */}
+        <div className="tabs">
+        {["INCLUSIONS", "EXCLUSIONS", "FACILITIES", "T&C"].map((tab) => (
+            <button
+            key={tab}
+            className={`tab-btn ${activeTab === tab ? "active" : ""}`}
+            onClick={() => handleTabClick(tab)}
+            >
+            {tab}
+            </button>
+        ))}
+        </div>
+
+        {/* Tab Content */}
+        <div className="tab-content">
+        {activeTab === "INCLUSIONS" && (
+            <div>
+            <p>✅ Base Fare for 61 km</p>
+            <p>✅ Driver Allowance</p>
+            <p>✅ State Tax & Toll</p>
+            <p>✅ GST (5%)</p>
+            </div>
+        )}
+        {activeTab === "EXCLUSIONS" && (
+            <div>
+            <p>❌ Additional distance fare</p>
+            <p>❌ Night charges (if applicable)</p>
+            </div>
+        )}
+        {activeTab === "FACILITIES" && (
+            <div>
+            <p>💡 AC available</p>
+            <p>🚗 Clean and Sanitized Cars</p>
+            </div>
+        )}
+        {activeTab === "T&C" && (
+            <div>
+            <p>⚠️ Refund on cancellation within 24 hours</p>
+            <p>⚠️ GST applicable as per Govt. rules</p>
+            </div>
+        )}
+        </div>
+    </div>
+    )}
+</div>
+);
+}
+
+export default CarDetail_Card;

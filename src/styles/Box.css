@@ -1,0 +1,84 @@
+.card{
+   width: 900px;
+   padding: 2px;
+   background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+#Dp{
+border-top-left-radius: 10px;
+border-top-right-radius: 10px;
+}
+#Round{
+   border-top-left-radius: 10px;
+border-top-right-radius: 10px;
+}
+#Wonder{
+   border-top-left-radius: 10px;
+   border-top-right-radius: 10px;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.card h4 {
+  padding: 20px 20px 10px;
+  margin: 0;
+  font-size: 1.5rem;
+  color: #2c3e50;
+}
+
+.card p {
+  padding: 0 20px 20px;
+  margin: 0;
+  color: #666;
+  line-height: 1.5;
+  flex-grow: 1;
+}
+
+.grid-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    padding: 20px;
+  }
+
+  .card img {
+    height: 180px;
+  }
+
+  .card h4 {
+    font-size: 1.3rem;
+  }
+}
+
+/* Add a container to ensure proper width */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}

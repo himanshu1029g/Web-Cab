@@ -1,0 +1,112 @@
+/* Inbox container styling */
+.inbox-wrapper {
+    width: 90%;
+    background-color: #f0f0f0; /* Light grey background */
+
+    align-self: center;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Clickable header */
+.inbox-header {
+    background-color: #555; /* Dark grey header */
+    color: white;
+    padding: 12px 16px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.3s;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.inbox-header:hover {
+    background-color: #444; /* Slightly darker grey on hover */
+}
+
+/* Inbox content */
+.inbox-container {
+    padding: 16px;
+    background-color: #f9f9f9; /* Slightly off-white for contrast */
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+/* Notification list styling */
+.notification-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.notification-item {
+    background-color: white;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.notification-item:hover {
+    transform: translateY(-3px);
+}
+
+/* Make text more readable */
+h3 {
+    margin: 0 0 5px;
+    color: #333;
+}
+
+p {
+    margin: 4px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Strong text styling */
+strong {
+    color: #222;
+}
+.notification-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/* Accept button styling */
+.accept-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.accept-btn:hover {
+    background-color: #218838;
+}
+
+/* Cancel button styling */
+.cancel-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.cancel-btn:hover {
+    background-color: #c82333;
+}

@@ -1,0 +1,392 @@
+.vendor-inbox-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.inbox-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.inbox-tabs button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #0d4077;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.inbox-tabs button.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.bookings-list,
+.applications-list {
+  margin-top: 20px;
+}
+
+.booking-card,
+.application-card {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+
+.booking-header,
+.application-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.booking-header h3,
+.application-header h3 {
+  margin: 0;
+}
+
+.date {
+  font-size: 0.9em;
+  color: #666;
+}
+
+.booking-details,
+.application-details {
+  margin-bottom: 10px;
+}
+
+.detail-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.detail-row .label {
+  color: #666;
+  min-width: 80px;
+  font-weight: 500;
+}
+
+.detail-row .value {
+  color: #333;
+  font-weight: 400;
+}
+
+.booking-actions,
+.application-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.apply-button,
+.delete-button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.apply-button {
+  background-color: #28a745;
+  color: white;
+}
+
+.apply-button:hover {
+  background-color: #218838;
+}
+
+.delete-button {
+  background-color: #dc3545;
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
+}
+
+.status-badge {
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+.status-badge.accepted {
+  background-color: #28a745;
+  color: white;
+}
+
+.status-badge.rejected {
+  background-color: #dc3545;
+  color: white;
+}
+
+.status-badge.pending {
+  background-color: #ffc107;
+  color: black;
+}
+
+.acceptance-notice {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #f0f9ff;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.acceptance-notice p {
+  color: #0369a1;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.rejection-notice {
+  margin-top: 16px;
+  padding: 12px;
+  background-color: #ffebee;
+  border-radius: 4px;
+  border-left: 4px solid #ef5350;
+}
+
+.rejection-notice p {
+  margin: 0;
+  color: #c62828;
+  font-size: 0.9rem;
+}
+
+.no-data {
+  text-align: center;
+  color: #666;
+  padding: 24px;
+  background: #f5f5f5;
+  border-radius: 8px;
+}
+
+.loading,
+.error {
+  text-align: center;
+  padding: 20px;
+}
+
+.back-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
+}
+
+/* Notification Styles */
+.notifications-list {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.notification-card {
+  background: white;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.notification-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.notification-card.unread {
+  border-left: 4px solid #2563eb;
+  background: #f0f7ff;
+}
+
+.notification-card.read {
+  border-left: 4px solid #90a4ae;
+  opacity: 0.8;
+}
+
+.notification-card[data-type="application_accepted"] {
+  background-color: #e8f5e9;
+}
+
+.notification-card[data-type="application_rejected"] {
+  background-color: #ffebee;
+}
+
+.notification-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.notification-header h3 {
+  color: #1976d2;
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.notification-header .date {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.notification-type {
+  font-weight: 600;
+  color: #2563eb;
+}
+
+.notification-time {
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+.notification-message {
+  color: #1f2937;
+  margin-bottom: 12px;
+}
+
+.booking-preview {
+  background: #f8fafc;
+  border-radius: 6px;
+  padding: 12px;
+  margin-top: 8px;
+}
+
+.booking-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.view-details-btn {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.view-details-btn:hover {
+  background: #1d4ed8;
+}
+
+.mark-read-btn {
+  background: transparent;
+  color: #6b7280;
+  border: 1px solid #d1d5db;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  margin-top: 8px;
+}
+
+.mark-read-btn:hover {
+  background: #f3f4f6;
+}
+
+.booking-info-wrapper {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.booking-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.info-section {
+  padding: 1rem;
+  background: #f8fafc;
+  border-radius: 6px;
+}
+
+.info-section h4 {
+  color: #1e40af;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.label {
+  color: #64748b;
+  font-weight: 500;
+}
+
+.value {
+  color: #1f2937;
+  font-weight: 500;
+}
+
+.value.price {
+  color: #059669;
+  font-weight: 600;
+}
+
+.booking-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.download-pdf-btn {
+  background: #2563eb;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.download-pdf-btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+.view-booking-info-btn {
+  background: #2563eb;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.view-booking-info-btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}

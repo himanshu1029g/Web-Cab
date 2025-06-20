@@ -1,0 +1,30 @@
+.icon-img{
+
+    width: 74px;
+    height: 69px;
+    border-radius: 34px;
+}
+
+.login-btn{
+    height: 43px;
+    width: 146px;
+    text-transform: capitalize;
+    font-size: 21px;
+}
+.login-btn:hover{
+    background-color: rgba(55, 98, 255, 0.975);
+}
+.active-btn {
+    background-color:  rgba(55, 98, 255, 0.975);
+    color: white;
+    /* font-weight: bold; */
+    }
+
+.one{
+    border-top-left-radius: 23px;
+    border-bottom-left-radius: 23px ;
+}
+.two{
+    border-top-right-radius: 23px;
+    border-bottom-right-radius: 23px ;
+}

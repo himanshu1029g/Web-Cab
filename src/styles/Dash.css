@@ -1,0 +1,100 @@
+/* ProfilePage.css */
+
+.container {
+  display: flex;
+  flex-direction: row;
+  background-color: #f3f4f6;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+.sidebar {
+  width: 100%;
+  max-width: 300px;
+  padding: 1rem;
+}
+
+.card {
+  background-color: #fff;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+}
+
+.card img {
+  border-radius: 50%;
+  margin-bottom: 0.5rem;
+}
+
+.card h2 {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.button-outline {
+  margin-top: 1rem;
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+}
+
+.link {
+  color: #2563eb;
+  margin-top: 0.5rem;
+  cursor: pointer;
+}
+
+.info-text {
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+.button-primary {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 4px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.main-content {
+  flex: 1;
+  padding: 1rem;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.sub-card {
+  background-color: #fff;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sub-card h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.sub-card p {
+  font-size: 0.875rem;
+  color: #4b5563;
+  margin-top: 0.5rem;
+}
+
+.sub-card .link {
+  margin-top: 0.5rem;
+}

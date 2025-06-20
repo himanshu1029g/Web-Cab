@@ -1,0 +1,44 @@
+#first-pera{
+  max-width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+h1{
+    color: #2c3e50;
+    font-size: 36px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+h2{
+    color: #3498db;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+p{
+    color: #444;
+    line-height: 1.8;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 30px; /* Space between text and image */
+  
+
+}
+.container {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cd {
+  margin-bottom: 40px;
+  padding: 30px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.cd:hover {
+  transform: translateY(-5px);
+}

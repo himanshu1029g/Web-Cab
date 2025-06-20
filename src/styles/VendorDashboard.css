@@ -1,0 +1,210 @@
+/* ...existing code... */
+
+.dashboard-tabs {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.dashboard-tabs button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #64748b;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dashboard-tabs button.active {
+  background: #1d4ed8;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(29, 78, 216, 0.2);
+}
+
+.dashboard-tabs button:hover:not(.active) {
+  background: #f1f5f9;
+  color: #1d4ed8;
+}
+
+.dashboard-tabs button span {
+  background: rgba(29, 78, 216, 0.1);
+  color: #1d4ed8;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.dashboard-tabs button.active span {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.dashboard-content {
+  background: #fff;
+  border-radius: 10px;
+  padding: 24px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.07);
+}
+
+.transaction-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background: white;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.transaction-table thead {
+  background: #1976d2;
+}
+
+.transaction-table th {
+  color: white;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+}
+
+.transaction-table tbody tr:nth-child(even) {
+  background: #f8f9fa;
+}
+
+.transaction-table td {
+  padding: 12px 16px;
+  font-size: 0.95rem;
+}
+
+/* Transaction Status Badges */
+.status-badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.status-badge.success {
+  background: #e3fcef;
+  color: #0d9488;
+}
+
+.status-badge.failed {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.status-badge.pending {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.status-badge.accepted {
+  background: #4caf50;
+  color: white;
+}
+
+.status-badge.rejected {
+  background: #f44336;
+  color: white;
+}
+
+.status-accepted {
+  color: #4caf50;
+}
+
+.status-rejected {
+  color: #f44336;
+}
+
+.error-message {
+  background-color: #ffebee;
+  border: 1px solid #ef5350;
+  color: #c62828;
+  padding: 12px;
+  margin: 12px 0;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.error-message button {
+  background-color: #ef5350;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Amount Column */
+.transaction-amount {
+  font-family: monospace;
+  font-weight: 600;
+}
+
+/* Payment ID */
+.payment-id {
+  font-family: monospace;
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+/* Responsive for small screens */
+@media (max-width: 900px) {
+  .dashboard-container {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .main-content {
+    padding: 10px;
+  }
+  .dashboard-content {
+    padding: 10px;
+  }
+  .dashboard-tabs {
+    flex-direction: column;
+    gap: 6px;
+  }
+  .transaction-table {
+    display: block;
+    overflow-x: auto;
+  }
+  
+  .transaction-table th,
+  .transaction-table td {
+    min-width: 120px;
+  }
+}
+
+@media (max-width: 640px) {
+  .dashboard-tabs {
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 0.75rem;
+    gap: 0.5rem;
+  }
+
+  .dashboard-tabs button {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    white-space: nowrap;
+  }
+}

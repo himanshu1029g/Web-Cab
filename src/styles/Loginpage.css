@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f5f5f5;
+}
+
+@media (max-width: 600px) {
+  .MuiPaper-root {
+    padding: 16px !important;
+  }
+
+  .MuiTypography-h4 {
+    font-size: 1.5rem !important;
+  }
+
+  .MuiButton-root {
+    font-size: 14px !important;
+    padding: 10px !important;
+  }
+
+  .MuiToggleButton-root {
+    font-size: 14px !important;
+  }
+}

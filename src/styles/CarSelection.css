@@ -1,0 +1,159 @@
+    /* === Main Container === */
+    .selection-container {
+      width: 90%;
+      margin: 20px auto;
+      padding: 10px;
+      background-color: #f8f9fa;
+  }
+  
+  /* === Individual Car Card (Horizontal View) === */
+  .car-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #fff;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* === Car Image === */
+  .car-card img {
+      width: 100px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 8px;
+  }
+  
+  /* === Car Info Section === */
+  .car-info {
+      flex-grow: 1;
+      padding: 0 16px;
+  }
+  
+  .car-info h3 {
+      margin: 0;
+      font-size: 18px;
+      color: #333;
+  }
+  
+  .car-info p {
+      margin: 4px 0;
+      color: #777;
+      font-size: 14px;
+  }
+  
+  /* === Price Section === */
+  .price-section {
+      text-align: right;
+  }
+  
+  .original-price {
+      text-decoration: line-through;
+      color: #999;
+      font-size: 14px;
+  }
+  
+  .discount {
+      color: #f00;
+      font-size: 14px;
+  }
+  
+  .final-price {
+      font-size: 18px;
+      color: #28a745;
+      font-weight: bold;
+  }
+  
+  /* === Select Button === */
+  .select-btn {
+      padding: 8px 16px;
+      background-color: #ff7f00;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-left: 12px;
+  }
+  
+  .select-btn:hover {
+      background-color: #e06700;
+  }
+  
+  /* === Collapsible Section === */
+  .details-btn {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      cursor: pointer;
+      border-radius: 4px;
+  }
+  
+  .details-btn:hover {
+      background-color: #0056b3;
+  }
+  
+  .collapsible-section {
+      padding: 12px;
+      border-top: 1px solid #eaeaea;
+      background-color: #f9f9f9;
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .selection-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.selection-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.car-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.car-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+} */

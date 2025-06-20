@@ -1,0 +1,64 @@
+Force scroll if table overflows
+.table-scroll-wrapper {
+    overflow-x: auto;
+    width: 100%;
+  }
+  
+  /* Stretch table nicely */
+  .orders-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px; /* forces horizontal scroll on smaller screens */
+  }
+  
+  /* Table cells */
+  .orders-table th,
+  .orders-table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    white-space: nowrap; /* stop breaking into multiple lines */
+  }
+  
+  /* Driver profile with image */
+  .driver-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  /* Driver image style */
+  .driver-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  /* Star rating */
+  .star {
+    color: #ccc;
+    font-size: 1.2rem;
+  }
+  .star.filled {
+    color: gold;
+  }
+  
+  /* Stretch cards properly */
+  .dashboard-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 1rem;
+  }
+  
+  .stats-card {
+    flex: 1;
+    min-width: 150px;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+  

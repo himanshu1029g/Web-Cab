@@ -1,0 +1,135 @@
+.booking-info-container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .booking-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #1976d2;
+  }
+  
+  .booking-id {
+    font-size: 1.2rem;
+    color: #1976d2;
+    font-weight: bold;
+  }
+  
+  .booking-status {
+    margin-bottom: 2rem;
+    text-align: right;
+  }
+  
+  .status-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  
+  .status-badge.confirmed { background: #dcfce7; color: #15803d; }
+  .status-badge.pending { background: #fef3c7; color: #d97706; }
+  .status-badge.completed { background: #2196f3; color: white; }
+  .status-badge.cancelled { background: #f44336; color: white; }
+  .status-badge.accepted {
+    background: #e0f2fe;
+    color: #0284c7;
+  }
+  .status-badge.paid {
+    background: #dcfce7;
+    color: #15803d;
+  }
+  
+  .booking-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+  }
+  
+  .info-section {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+  }
+  
+  .info-section h2 {
+    color: #1976d2;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+  
+  .detail-row {
+    display: flex;
+    margin-bottom: 0.8rem;
+    align-items: baseline;
+  }
+  
+  .label {
+    min-width: 120px;
+    color: #666;
+    font-weight: 500;
+  }
+  
+  .value {
+    color: #333;
+    font-weight: 400;
+  }
+  
+  .action-buttons {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+  
+  .download-btn, .back-btn {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    /* width: 180px; */
+    /* height: 65px; */
+    width: 180px;
+    height: 65px;
+  }
+  
+  .download-btn {
+    background: #1976d2;
+    color: white;
+  }
+  
+  .back-btn {
+    color: #e0e0e0;
+    background-color: #333;
+    margin-top: 21px;
+    
+  }
+  
+  .download-btn:hover {
+    background: rgb(41, 125, 41);
+  }
+  
+  .back-btn:hover {
+    background: #575252;
+  }
+  
+  .price {
+    color: #15803d;
+    font-weight: 600;
+  }
+  
+  @media print {
+    .action-buttons {
+      display: none;
+    }
+  }

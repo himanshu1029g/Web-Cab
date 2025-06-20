@@ -1,0 +1,41 @@
+.payment-container {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 15px;
+  margin: 10px 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.amount-display {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.payment-button {
+  background: #3399cc;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.payment-button:hover {
+  background: #2980b9;
+  transform: translateY(-1px);
+}
+
+.payment-button:disabled {
+  background: #95a5a6;
+  cursor: not-allowed;
+}
+
+.success-text {
+  color: #27ae60;
+  font-weight: 500;
+  margin-top: 8px;
+}

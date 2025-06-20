@@ -1,0 +1,320 @@
+import React from 'react';
+import { Formik, Form, Field, ErrorMessage, FieldArray } from 'formik';
+import * as Yup from 'yup';
+import {
+  Button,
+  Checkbox,
+  FormControlLabel,
+  TextField,
+  Typography,
+  Container,
+  Paper,
+  Box,
+  Link as MuiLink,
+} from '@mui/material';
+import { styled } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { getFirestore, doc, setDoc } from 'firebase/firestore';
+import { app } from '../firebase';
+import backgroundImage from '../images/loginpagepic.jpeg';
+
+// Validation Schema
+const validationSchema = Yup.object({
+  businessName: Yup.string().required('Business Name is required'),
+  gstNumber: Yup.string(),
+  businessType: Yup.array().min(1, 'Select at least one business type'),
+  firstName: Yup.string().required('First Name is required'),
+  lastName: Yup.string().required('Last Name is required'),
+  email: Yup.string().email('Invalid email').required('Email is required'),
+  password: Yup.string()
+    .min(6, 'Password must be at least 6 characters')
+    .required('Password is required'),
+  address: Yup.object({
+    street: Yup.string().required('Street is required'),
+    city: Yup.string().required('City is required'),
+    state: Yup.string().required('State is required'),
+  }),
+  phone: Yup.string()
+    .matches(/^[0-9]{10}$/, 'Phone number must be 10 digits')
+    .required('Phone number is required'),
+  officePhone: Yup.string().matches(/^[0-9]{10}$/, 'Office phone number must be 10 digits'),
+});
+
+// Styled Components
+const StyledContainer = styled(Container)(({ theme }) => ({
+  position: 'relative',
+  minHeight: '100vh',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  padding: theme.spacing(2),
+}));
+
+const BackgroundImage = styled('img')({
+  position: 'fixed',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+  objectFit: 'cover',
+  zIndex: -1,
+  filter: 'blur(8px)',
+});
+
+const StyledPaper = styled(Paper)(({ theme }) => ({
+  padding: theme.spacing(4),
+  borderRadius: '15px',
+  maxWidth: '600px',
+  width: '100%',
+}));
+
+const Signup_vendor = () => {
+  const navigate = useNavigate();
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  const initialValues = {
+    businessName: '',
+    gstNumber: '',
+    businessType: [],
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    address: {
+      street: '',
+      city: '',
+      state: '',
+    },
+    phone: '',
+    officePhone: '',
+  };
+
+  const handleSubmit = async (values, { setSubmitting, setErrors }) => {
+    try {
+      // Create user with email and password
+      const userCredential = await createUserWithEmailAndPassword(auth, values.email, values.password);
+      const user = userCredential.user;
+
+      // Update user profile
+      await updateProfile(user, {
+        displayName: `${values.firstName} ${values.lastName}`,
+      });
+
+      // Store vendor data in Firestore's vendors collection
+      await setDoc(doc(db, 'vendors', user.uid), {
+        role: 'vendor',
+        businessName: values.businessName,
+        gstNumber: values.gstNumber,
+        businessType: values.businessType,
+        firstName: values.firstName,
+        lastName: values.lastName,
+        email: values.email,
+        address: values.address,
+        phone: values.phone,
+        officePhone: values.officePhone,
+        createdAt: new Date(),
+      });
+
+      // Redirect to vendor dashboard
+      navigate('/vendor/dashboard');
+    } catch (err) {
+      setErrors({ submit: 'Signup failed: ' + err.message });
+      setSubmitting(false);
+    }
+  };
+
+  return (
+    <StyledContainer>
+      <BackgroundImage src={backgroundImage} alt="Background" />
+      <StyledPaper elevation={3}>
+        <Typography variant="h4" align="center" gutterBottom>
+          Vendor Registration
+        </Typography>
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={handleSubmit}
+          validateOnChange={false}
+          validateOnBlur={true}
+        >
+          {({ values, setFieldValue, isSubmitting, errors }) => (
+            <Form>
+              <Field
+                as={TextField}
+                name="businessName"
+                label="Business Name *"
+                fullWidth
+                margin="normal"
+                variant="outlined"
+                helperText={<ErrorMessage name="businessName" />}
+              />
+              
+              <Field
+                as={TextField}
+                name="gstNumber"
+                label="GST Number"
+                fullWidth
+                margin="normal"
+                variant="outlined"
+                helperText={<ErrorMessage name="gstNumber" />}
+              />
+
+              <Typography variant="subtitle1" gutterBottom>
+                Business Type *
+              </Typography>
+              <FieldArray name="businessType">
+                {({ push, remove, form }) => (
+                  <>
+                    {['PVT Limited Company', 'Personal Business', 'Travel Agency'].map((type) => (
+                      <FormControlLabel
+                        key={type}
+                        control={
+                          <Checkbox
+                            checked={form.values.businessType.includes(type)}
+                            onChange={e => {
+                              if (e.target.checked) push(type);
+                              else remove(form.values.businessType.indexOf(type));
+                            }}
+                          />
+                        }
+                        label={type}
+                      />
+                    ))}
+                  </>
+                )}
+              </FieldArray>
+              <ErrorMessage name="businessType" component="div" style={{ color: 'red' }} />
+
+              <Box sx={{ display: 'flex', gap: 2, my: 2 }}>
+                <Field
+                  as={TextField}
+                  name="firstName"
+                  label="First Name *"
+                  fullWidth
+                  margin="normal"
+                  variant="outlined"
+                  helperText={<ErrorMessage name="firstName" />}
+                />
+                <Field
+                  as={TextField}
+                  name="lastName"
+                  label="Last Name *"
+                  fullWidth
+                  margin="normal"
+                  variant="outlined"
+                  helperText={<ErrorMessage name="lastName" />}
+                />
+              </Box>
+
+              <Field
+                as={TextField}
+                name="email"
+                label="Email *"
+                fullWidth
+                margin="normal"
+                variant="outlined"
+                helperText={<ErrorMessage name="email" />}
+              />
+
+              <Field
+                as={TextField}
+                name="password"
+                label="Password *"
+                type="password"
+                fullWidth
+                margin="normal"
+                variant="outlined"
+                helperText={<ErrorMessage name="password" />}
+              />
+
+              <Typography variant="subtitle1" gutterBottom>
+                Office Address *
+              </Typography>
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, my: 2 }}>
+                <Field
+                  as={TextField}
+                  name="address.street"
+                  label="Street Address *"
+                  fullWidth
+                  margin="normal"
+                  variant="outlined"
+                  helperText={<ErrorMessage name="address.street" />}
+                />
+                <Box sx={{ display: 'flex', gap: 2 }}>
+                  <Field
+                    as={TextField}
+                    name="address.city"
+                    label="City *"
+                    fullWidth
+                    margin="normal"
+                    variant="outlined"
+                    helperText={<ErrorMessage name="address.city" />}
+                  />
+                  <Field
+                    as={TextField}
+                    name="address.state"
+                    label="State *"
+                    fullWidth
+                    margin="normal"
+                    variant="outlined"
+                    helperText={<ErrorMessage name="address.state" />}
+                  />
+                </Box>
+              </Box>
+
+              <Field
+                as={TextField}
+                name="phone"
+                label="Phone Number *"
+                fullWidth
+                margin="normal"
+                variant="outlined"
+                helperText={<ErrorMessage name="phone" />}
+                inputProps={{ maxLength: 10 }}
+              />
+
+              <Field
+                as={TextField}
+                name="officePhone"
+                label="Office Phone Number"
+                fullWidth
+                margin="normal"
+                variant="outlined"
+                helperText={<ErrorMessage name="officePhone" />}
+                inputProps={{ maxLength: 10 }}
+              />
+
+              {errors.submit && (
+                <Typography color="error" variant="body2" sx={{ mt: 2 }}>
+                  {errors.submit}
+                </Typography>
+              )}
+
+              <Button
+                type="submit"
+                variant="contained"
+                fullWidth
+                size="large"
+                disabled={isSubmitting}
+                sx={{ mt: 3, py: 1.5, backgroundColor: '#0d6efd' }}
+              >
+                {isSubmitting ? 'Submitting...' : 'Register'}
+              </Button>
+
+              <Typography variant="body2" align="center" sx={{ mt: 2 }}>
+                Already have an account?{' '}
+                <MuiLink href="/login" underline="hover">
+                  Log in
+                </MuiLink>
+              </Typography>
+            </Form>
+          )}
+        </Formik>
+      </StyledPaper>
+    </StyledContainer>
+  );
+};
+
+export default Signup_vendor;
